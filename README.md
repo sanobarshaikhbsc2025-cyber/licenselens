@@ -501,3 +501,8 @@ This project is licensed under the MIT License - see LICENSE file for details.
 Made with ❤️ by Person A & Person B
 
 </div>
+
+ # #   S t a t u s 
+ B a c k e n d   a n d   D a s h b o a r d   i m p l e m e n t e d   w i t h   m o c k   d a t a   ( r e a d y   f o r   P e r s o n   A   i n t e g r a t i o n ) . 
+  
+ 
