@@ -426,3 +426,5 @@ elif page == "ℹ️ About":
     
     st.divider()
     st.markdown("**LicenseLens v1.0.0** - Built for OST Course")
+#   F u t u r e :   a d d   a u t h e n t i c a t i o n   f o r   m u l t i - u s e r   s u p p o r t  
+ 
