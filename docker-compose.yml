@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # FastAPI Backend Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    container_name: licenselens-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./backend:/app
+    networks:
+      - licenselens-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Streamlit Dashboard Service
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile.dashboard
+    container_name: licenselens-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./dashboard:/app
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - licenselens-network
+
+networks:
+  licenselens-network:
+    driver: bridge
+
+# Volume configuration (optional for future database)
+volumes:
+  licenselens-data:
+    driver: local
